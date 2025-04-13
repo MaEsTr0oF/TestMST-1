@@ -1,0 +1,57 @@
+.header {
+    height: 60px;
+}
+
+.logo {
+    top: 18px;
+    font-size: 20px;
+}
+
+.menu-toggle {
+    top: 19px;
+}
+
+.hero__content {
+    padding: 70px 15px 30px;
+    height: auto;
+    overflow: visible;
+}
+
+.hero__title {
+    font-size: 24px;
+    line-height: 1.2;
+}
+
+.hero__subtitle {
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+.benefits {
+    margin-bottom: 25px;
+}
+
+.benefits__item {
+    margin-bottom: 12px;
+}
+
+.benefits__text {
+    font-size: 13px;
+}
+
+.benefits__text strong {
+    font-size: 15px;
+}
+
+.contact__form-wrapper {
+    padding: 20px 15px;
+}
+
+.footer__social {
+    gap: 8px;
+}
+
+.social__link {
+    width: 28px;
+    height: 28px;
+} 

@@ -1,0 +1,40 @@
+.hero__title {
+    font-size: 22px;
+}
+
+.hero__subtitle {
+    font-size: 14px;
+}
+
+.benefits__text {
+    font-size: 12px;
+}
+
+.benefits__text strong {
+    font-size: 14px;
+}
+
+.benefits__icon {
+    width: 18px;
+    height: 18px;
+    font-size: 9px;
+}
+
+.btn--primary {
+    max-width: 170px;
+    font-size: 12px;
+}
+
+.features-list__icon {
+    width: 18px;
+    height: 18px;
+}
+
+.logo {
+    font-size: 18px;
+}
+
+.menu-toggle {
+    width: 22px;
+    height: 18px;
+} 
