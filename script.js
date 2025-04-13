@@ -1,39 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
     
     const header = document.querySelector('.header');
+    const logo = document.querySelector('.logo');
+    const nav = document.querySelector('.nav');
+    const menuToggle = document.querySelector('.menu-toggle');
     
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
+    // Проверка прокрутки и обновление состояния хедера
+    function checkScroll() {
+        if (window.pageYOffset > 50) {
             header.classList.add('scrolled');
         } else {
             header.classList.remove('scrolled');
         }
+    }
+    
+    // Проверяем при загрузке страницы
+    checkScroll();
+    
+    // Проверяем при прокрутке с небольшой оптимизацией (throttle)
+    let scrollTimer;
+    window.addEventListener('scroll', function() {
+        if (!scrollTimer) {
+            scrollTimer = setTimeout(function() {
+                checkScroll();
+                scrollTimer = null;
+            }, 100);
+        }
     });
     
-    
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('.nav');
-    
+    // Обработка мобильного меню
     if (menuToggle) {
         menuToggle.addEventListener('click', function() {
             menuToggle.classList.toggle('active');
             nav.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
         });
     }
+    
+    // Закрытие мобильного меню при клике на ссылку
+    const navLinks = document.querySelectorAll('.nav__link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            if (nav.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                nav.classList.remove('active');
+                document.body.classList.remove('menu-open');
+            }
+        });
+    });
     
     
     document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(element => {
         element.classList.add('active');
     });
     
-    
-    document.querySelectorAll('.properties__image').forEach(element => {
+    // Задаем индексы для анимации
+    document.querySelectorAll('.features-list__item').forEach((element, index) => {
+        element.style.setProperty('--item-index', index);
         element.classList.add('reveal', 'active');
     });
     
-    document.querySelectorAll('.features-list__item').forEach((element, index) => {
+    document.querySelectorAll('.properties__image').forEach(element => {
         element.classList.add('reveal', 'active');
-        element.style.transitionDelay = `${index * 0.1}s`;
     });
     
     if (document.querySelector('.contact__form-wrapper')) {

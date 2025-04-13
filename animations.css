@@ -75,10 +75,8 @@
     animation-fill-mode: forwards;
 }
 
-.hero__image {
-    animation: slideInRight 0.8s 0.4s ease forwards;
-    opacity: 0;
-    animation-fill-mode: forwards;
+.hero {
+    animation: fadeIn 1s ease forwards;
 }
 
 .properties__image {
@@ -94,11 +92,20 @@
 }
 
 .features-list__item {
+    animation: fadeIn 0.5s ease forwards;
+    animation-delay: calc(0.2s * var(--item-index, 0));
+    opacity: 0;
+    animation-fill-mode: forwards;
     transition: transform 0.3s ease;
 }
 
 .features-list__item:hover {
-    transform: translateX(5px);
+    transform: translateY(-5px);
+}
+
+.features-list__icon {
+    animation: pulse 1.5s infinite;
+    animation-delay: calc(0.5s * var(--item-index, 0));
 }
 
 .btn {
