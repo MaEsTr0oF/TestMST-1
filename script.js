@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const logo = document.querySelector('.logo');
     const nav = document.querySelector('.nav');
     const menuToggle = document.querySelector('.menu-toggle');
+    const hero = document.querySelector('.hero');
+    const properties = document.querySelector('.properties');
     
     // Проверка прокрутки и обновление состояния хедера
     function checkScroll() {
@@ -45,6 +47,63 @@ document.addEventListener('DOMContentLoaded', function() {
                 menuToggle.classList.remove('active');
                 nav.classList.remove('active');
                 document.body.classList.remove('menu-open');
+            }
+        });
+    });
+    
+    // Исправление проблем с прокруткой на мобильных устройствах
+    function fixScrollIssues() {
+        const windowWidth = window.innerWidth;
+        
+        if (windowWidth <= 992) {
+            // Мобильная версия
+            hero.style.height = 'auto';
+            hero.style.minHeight = 'auto';
+            document.body.style.overflow = 'auto';
+            
+            // Установка правильных z-индексов
+            if (properties) {
+                properties.style.zIndex = '5';
+                properties.style.position = 'relative';
+            }
+        } else {
+            // Десктопная версия
+            hero.style.height = '100vh';
+            hero.style.minHeight = '100vh';
+        }
+    }
+    
+    // Вызов функции при загрузке страницы
+    fixScrollIssues();
+    
+    // Вызов функции при изменении размера окна
+    window.addEventListener('resize', fixScrollIssues);
+    
+    // Плавная прокрутка к якорям
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Закрываем мобильное меню перед прокруткой
+                if (menuToggle && menuToggle.classList.contains('active')) {
+                    menuToggle.classList.remove('active');
+                    nav.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                }
+                
+                // Прокрутка с учетом высоты хедера
+                const headerHeight = header.offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                
+                window.scrollTo({
+                    top: targetPosition - headerHeight,
+                    behavior: 'smooth'
+                });
             }
         });
     });

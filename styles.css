@@ -27,6 +27,7 @@ body {
     color: var(--color-text);
     overflow-x: hidden;
     background-color: #282829;
+    position: relative;
 }
 
 body.menu-open {
@@ -332,6 +333,8 @@ ul, ol {
 
 .benefits {
     margin-bottom: 80px;
+    position: relative;
+    z-index: 2;
 }
 
 .benefits__item {
@@ -369,9 +372,10 @@ ul, ol {
     padding: 0;
     background-color: #282829;
     position: relative;
-    z-index: 1;
+    z-index: 5;
     overflow: hidden;
     color: var(--color-light);
+    clear: both;
 }
 
 .properties__container {
@@ -456,7 +460,7 @@ ul, ol {
 
 .contact {
     position: relative;
-    z-index: 1;
+    z-index: 5;
     overflow: visible;
     padding-bottom: 100px;
 }
@@ -533,6 +537,7 @@ ul, ol {
     color: var(--color-light);
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 5;
 }
 
 .footer__top {
@@ -747,6 +752,7 @@ ul, ol {
         max-width: 100%;
         width: 100%;
         height: auto;
+        min-height: auto;
         padding: 120px 40px 50px;
         align-items: flex-start;
     }
@@ -799,11 +805,21 @@ ul, ol {
     .footer__right {
         gap: 20px;
     }
+    
+    .hero {
+        height: auto;
+        min-height: auto;
+        overflow: visible;
+    }
 }
 
 @media (max-width: 768px) {
     .container {
         max-width: 576px;
+    }
+    
+    body {
+        overflow-y: auto;
     }
     
     .header {
@@ -889,6 +905,8 @@ ul, ol {
     
     .hero__content {
         padding: 90px 15px 40px;
+        height: auto;
+        overflow: visible;
     }
     
     .properties__gallery {
@@ -955,11 +973,36 @@ ul, ol {
     .footer__links {
         justify-content: center;
     }
+    
+    .hero {
+        overflow: visible;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .hero__container {
+        height: auto;
+        overflow: visible;
+    }
+    
+    main {
+        overflow: visible;
+    }
+    
+    .properties {
+        margin-top: 0;
+        padding-top: 1px;
+    }
 }
 
 @media (max-width: 576px) {
     .container {
         padding: 0 15px;
+    }
+    
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
     }
     
     .header {
@@ -984,6 +1027,8 @@ ul, ol {
     
     .hero__content {
         padding: 90px 15px 40px;
+        height: auto;
+        overflow: visible;
     }
     
     .hero__title {
@@ -1121,11 +1166,34 @@ ul, ol {
         padding: 10px 20px;
         font-size: 12px;
     }
+    
+    .hero {
+        overflow: visible;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .hero__container {
+        height: auto;
+        overflow: visible;
+    }
+    
+    .hero__content {
+        padding: 90px 15px 40px;
+        height: auto;
+        overflow: visible;
+    }
+    
+    .properties {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 480px) {
     .hero__content {
         padding: 80px 15px 30px;
+        height: auto;
+        overflow: visible;
     }
     
     .hero__image {
@@ -1165,6 +1233,10 @@ ul, ol {
         padding: 10px 20px;
         font-size: 12px;
     }
+    
+    .properties {
+        margin-top: 0;
+    }
 }
 
 @media (max-width: 375px) {
@@ -1183,6 +1255,8 @@ ul, ol {
     
     .hero__content {
         padding: 70px 15px 30px;
+        height: auto;
+        overflow: visible;
     }
     
     .hero__title {
